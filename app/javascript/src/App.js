@@ -6,11 +6,12 @@ import Card from './components/Card';
 import BannedList from './components/BannedList';
 import SelectedDeck from './components/SelectedDeck';
 import Home from './components/Home';
+import ModalExample from './components/ModalExample';
 
 class App extends Component {
   constructor(props) {
     super();
-    this.match = props
+    this.match = props.match
     this.state = {
       cards: [],
       bannedList: []
@@ -82,7 +83,8 @@ class App extends Component {
                         {this.components.cards}
                         {this.components.selectedDeck}
                       </div>;
-    return ([this.components.bannedList, playerBoard, <Home />])
+    console.log(this.match);
+    return ([this.components.bannedList, playerBoard, <ModalExample teams={this.match.teams} />])
   }
 }
 

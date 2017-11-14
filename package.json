@@ -9,6 +9,7 @@
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "react-hot-loader": "^3.1.2",
+    "react-modal": "^3.1.2",
     "react-on-rails": "^10.0.2"
   },
   "devDependencies": {
