@@ -2,12 +2,20 @@ import React, { Component } from 'react';
 
 class Card extends Component {
 
+
   banCard(card) {
-    this.props.onCardClick({...card})
-    card.isBanned = true;
+    if (Stage.isHold()){
+      return;
+    } else if (Stage.isBanning()) {
+      card.isBanned = true;
+      this.props.onCardClick({...card})
+      Socket.default.card_banned(card.idName, Stage.currentTeam.id)
+      Stage.setHold()
+    } else if(Stage.isSelection()) {
+      card.isSelected = true;
+      Socket.default.card_selected(card.idName, Stage.currentTeam.id)
+    }
     this.setState({ card })
-    var playerID = 1
-    App.global_chat.send_message(card.idName, playerID)
   }
 
   render() {

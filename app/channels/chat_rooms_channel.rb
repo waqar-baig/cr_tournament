@@ -7,9 +7,10 @@ class ChatRoomsChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-  def send_message(data)
+  def card_banned(data)
     # @team = Team.create!(name: data['message'])
     # @team.teams_matches.create(match_id: data['chat_room_id'])
-    MessageBroadcastJob.perform_later(data['message'])
+    MessageBroadcastJob.perform_later(data['message'], data['team_id'])
   end
+
 end
