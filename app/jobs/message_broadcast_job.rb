@@ -1,10 +1,8 @@
 class MessageBroadcastJob < ApplicationJob
   queue_as :default
 
-  def perform(message, team_id)
-  	match_id = message
-    ActionCable.server.broadcast "chat_rooms_1_channel", message: message,
-      teamID: team_id
+  def perform(card)
+    ActionCable.server.broadcast "chat_rooms_1_channel", card
   end
 
   private

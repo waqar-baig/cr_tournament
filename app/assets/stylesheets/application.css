@@ -38,16 +38,16 @@
 }
 
 .Card { position: relative; }
-.BannedList {
-  background-color: red;
-  opacity: 0.5;
-}
+.BannedList { background-color: red; }
+.OpponentCard { background-color: yellow; }
 .BannedList h3 { text-align: center; color: white; margin: 20px 0px; }
-.selection-deck { background-color: green; }
+.CardList { background-color: green; }
 .SelectedDeck, .selected-deck {
   background-color: #004cf6;
   padding: 5px;
 }
+
+.SelectedDeck .ml-10:not(:first-child) { margin-left: 10px; }
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

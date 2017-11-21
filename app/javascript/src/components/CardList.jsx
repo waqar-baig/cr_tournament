@@ -15,10 +15,12 @@ class CardList extends Component {
       return <p>Loading…</p>;
     }
     return(
-      <div className="row">
-        {this.props.cards.map(card => (
-          <Card key={card._id} {...card} />
-        ))}
+      <div className="CardList col-md-8">
+        <div className="row">
+          {this.props.cards.map(card => (
+            <Card key={card._id} {...card} />
+          ))}
+        </div>
       </div>
     );
   }

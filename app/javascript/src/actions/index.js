@@ -8,7 +8,15 @@ export const addTodo = text => {
 }
 
 export const handleCardClick = card => {
-  return selectCard(card)
+  if (card.state.cardsBanned.length >=2) {
+    return selectCard(card)
+  } else if (window.canBanCard) {
+    return banCard(card)
+  } else {
+    return {
+      type: 'HOLD'
+    }
+  }
 }
 
 export const setVisibilityFilter = filter => {
@@ -19,16 +27,27 @@ export const setVisibilityFilter = filter => {
 }
 
 export const selectCard = card => {
-  console.log("card.idName")
   return {
     type: 'SELECT_CARD',
     card
   }
 }
 
+export const opponentBannedCard = card => {
+  return {
+    type: 'OPPONENT_BAN_CARD',
+    card
+  }
+}
+
+export const opponentSelectedCard = card => {
+  return {
+    type: 'OPPONENT_SELECT_CARD',
+    card
+  }
+}
 
 export const banCard = card => {
-  console.log("card.idName")
   return {
     type: 'BAN_CARD',
     card
