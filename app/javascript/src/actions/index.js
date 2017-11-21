@@ -26,12 +26,21 @@ export const selectCard = card => {
   }
 }
 
-
 export const banCard = card => {
   console.log("card.idName")
   return {
     type: 'BAN_CARD',
     card
+  }
+}
+
+// need to use async
+export const handleChange = (option, name) => {
+  if (name == "rarity") {
+    return selectRarity(option)
+  }
+  else if (name == "types") {
+    return selectTypes(option)
   }
 }
 
@@ -66,4 +75,18 @@ export function cardsFetchData(url) {
       .then((response) => response.json())
       .then((cards) => dispatch(cardsFetchDataSuccess(cards)));
   };
+}
+
+export function selectRarity(option) {
+  return {
+    type: 'SELECT_RARITY',
+    option
+  }
+}
+
+export function selectTypes(option) {
+  return {
+    type: 'SELECT_TYPES',
+    option
+  }
 }

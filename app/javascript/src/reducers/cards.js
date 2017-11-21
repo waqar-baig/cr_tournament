@@ -2,7 +2,6 @@ export function cardsIsLoading(state = true, action) {
   switch (action.type) {
     case 'CARDS_IS_LOADING':
       return action.isLoading;
-
     default:
       return state;
   }
@@ -13,6 +12,10 @@ export function cards(state = [], action={}) {
   switch (action.type) {
     case 'CARDS_FETCH_DATA_SUCCESS':
       return action.cards;
+    case 'SELECT_RARITY':
+      return state.filter(card => card.rarity == action.option);
+    case 'SELECT_TYPES':
+      return state.filter(card => card.type == action.option);
     default:
       return state
   }

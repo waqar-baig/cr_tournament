@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { cardsFetchData } from '../actions'
+import { cardsFetchData, handleChange, selectRarity, selectTypes } from '../actions'
 import CardList from '../components/CardList'
 
 const getVisibleCards = (cards=[], filter) => {
@@ -18,7 +18,6 @@ const mapStateToProps = state => {
   return {
     cards: state.cards,
     isLoading: state.cardsIsLoading
-
   }
 }
 
@@ -26,6 +25,14 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchData: url => {
       dispatch(cardsFetchData(url))
+    },
+    logChange: (option, name) => {
+      if (name == "rarity") {
+        dispatch(selectRarity(option))
+      }
+      else if (name == "types") {
+        dispatch(selectTypes(option))
+      }
     }
   }
 }
