@@ -3,22 +3,21 @@ import { cardsFetchData, handleChange, selectRarity, selectTypes } from '../acti
 import CardList from '../components/CardList'
 
 const getVisibleCards = (cards=[], filter) => {
-  let _cards = cards.filter(t => !t.isBanned)
-  switch (filter) {
-    case 'SHOW_ALL':
-      return _cards
-    case 'SHOW_COMPLETED':
-      return _cards.filter(t => t.completed)
-    case 'SHOW_ACTIVE':
-      return _cards.filter(t => !t.completed)
+  let _cards = cards
+  if (filter.rarity && filter.rarity != 'All') {
+    _cards = _cards.filter(c => c.rarity == filter.rarity)
   }
+  if (filter.cardType && filter.cardType != 'All') {
+    _cards = _cards.filter(c => c.type == filter.cardType)
+  }
+  return _cards;
 }
 
 const mapStateToProps = state => {
   return {
-    cards: state.cards,
+    cards: getVisibleCards(state.cards, state.visibilityFilter),
     isLoading: state.cardsIsLoading,
-    selectedRarity: "All"
+    visibilityFilter: state.visibilityFilter
   }
 }
 
@@ -28,16 +27,11 @@ const mapDispatchToProps = dispatch => {
       dispatch(cardsFetchData(url))
     },
     logChange: (option, name) => {
-      if (option == 'All') {
-        dispatch(cardsFetchData('/cards.json'))
+      if (name == "rarity") {
+        dispatch(selectRarity(option))
       }
-      else {
-        if (name == "rarity") {
-          dispatch(selectRarity(option))
-        }
-        else if (name == "types") {
-          dispatch(selectTypes(option))
-        }
+      else if (name == "types") {
+        dispatch(selectTypes(option))
       }
     }
   }

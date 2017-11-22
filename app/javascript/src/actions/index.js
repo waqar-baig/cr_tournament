@@ -80,13 +80,13 @@ export function cardsFetchData(url) {
 export function selectRarity(option) {
   return {
     type: 'SELECT_RARITY',
-    option
+    rarity: option
   }
 }
 
 export function selectTypes(option) {
   return {
     type: 'SELECT_TYPES',
-    option
+    cardType: option
   }
 }
