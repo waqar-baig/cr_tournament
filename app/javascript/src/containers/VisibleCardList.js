@@ -17,7 +17,8 @@ const getVisibleCards = (cards=[], filter) => {
 const mapStateToProps = state => {
   return {
     cards: state.cards,
-    isLoading: state.cardsIsLoading
+    isLoading: state.cardsIsLoading,
+    selectedRarity: "All"
   }
 }
 
@@ -27,11 +28,16 @@ const mapDispatchToProps = dispatch => {
       dispatch(cardsFetchData(url))
     },
     logChange: (option, name) => {
-      if (name == "rarity") {
-        dispatch(selectRarity(option))
+      if (option == 'All') {
+        dispatch(cardsFetchData('/cards.json'))
       }
-      else if (name == "types") {
-        dispatch(selectTypes(option))
+      else {
+        if (name == "rarity") {
+          dispatch(selectRarity(option))
+        }
+        else if (name == "types") {
+          dispatch(selectTypes(option))
+        }
       }
     }
   }

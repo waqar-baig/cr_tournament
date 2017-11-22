@@ -7,10 +7,11 @@ import Card from './Card';
 class CardList extends Component {
   constructor(props) {
     super(props);
+    this.selectedRarity = this.props.selectedRarity,
     this.rarities = [
         {
           name: 'Select Rarity',
-          value: null,
+          value: 'All',
         },
         {
           name:  'Common',
@@ -32,7 +33,7 @@ class CardList extends Component {
     this.types = [
         {
           name: 'Select Type',
-          value: null,
+          value: 'All',
         },
         {
           name:  'Troop',
