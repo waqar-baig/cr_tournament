@@ -20,7 +20,7 @@ const mapDispatchToProps = dispatch => {
         if (data.team_id == window.currentTeamId || data.action == 'card_banned') {
           return
         }
-        window.canBanCard = true;
+        window.canSelectCard = true
         dispatch(opponentSelectedCard({_id: data.card_id, idName: data.card_name}))
       }
     });

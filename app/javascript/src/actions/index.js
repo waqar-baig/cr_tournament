@@ -8,7 +8,7 @@ export const addTodo = text => {
 }
 
 export const handleCardClick = card => {
-  if (card.state.cardsBanned.length >=2) {
+  if (card.state.cardsBanned.length >=2 && window.canSelectCard) {
     return selectCard(card)
   } else if (window.canBanCard) {
     return banCard(card)

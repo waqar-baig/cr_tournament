@@ -17,8 +17,8 @@ const getVisibleCards = (cards=[], filter) => {
 const mapStateToProps = state => {
   return {
     cards: state.cards,
-    isLoading: state.cardsIsLoading
-
+    isLoading: state.cardsIsLoading,
+    isHold: state.isHold
   }
 }
 

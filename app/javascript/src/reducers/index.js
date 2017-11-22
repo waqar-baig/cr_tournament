@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import { cards, playerDeck, cardsIsLoading } from './cards'
-import { cardsBanned, opponentCards } from './cards'
+import { cardsBanned, opponentCards, isHold } from './cards'
 import visibilityFilter from './visibilityFilter'
 
 const todoApp = combineReducers({
@@ -9,7 +9,8 @@ const todoApp = combineReducers({
   visibilityFilter,
   playerDeck,
   cardsBanned,
-  opponentCards
+  opponentCards,
+  isHold
 })
 
 export default todoApp
