@@ -17,6 +17,7 @@ const mapStateToProps = state => {
   return {
     cards: getVisibleCards(state.cards, state.visibilityFilter),
     isLoading: state.cardsIsLoading,
+    isHold: state.isHold,
     visibilityFilter: state.visibilityFilter
   }
 }

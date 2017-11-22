@@ -7,6 +7,7 @@ import thunk from 'redux-thunk';
 import todoApp from '../src/reducers'
 import App from '../src/components/App'
 
+window.currentTeamId = window.location.search.split('=')[1];
 let store = createStore(todoApp, applyMiddleware(thunk))
 // This is how react_on_rails can see the HelloWorld in the browser.
 render(

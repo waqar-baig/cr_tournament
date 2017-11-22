@@ -11,8 +11,8 @@ Socket.default = Socket.cable.subscriptions.create {
   received: (data) ->
     messages.append data['message']
 
-  card_banned: (message, teamID) ->
-    @perform 'card_banned', message: message, team_id: teamID
+  card_banned: (cardID, cardName, teamID) ->
+    @perform 'card_banned', card_id: cardID, card_name: cardName, team_id: teamID
 
-  card_selected: (cardID, teamID) ->
-    @perform 'card_selected', card_id: cardID, team_id: teamID
+  card_selected: (cardID, cardName, teamID, playerID) ->
+    @perform 'card_selected', card_id: cardID, card_name: cardName, team_id: teamID, player_id: playerID

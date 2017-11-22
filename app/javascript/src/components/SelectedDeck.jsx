@@ -26,7 +26,7 @@ class PlayerDeck extends Component {
       playerList = <div className="col-md-12"><h3>Your selected deck will be displayed here.</h3></div>
     } else {
       playerList = this.props.playerDeck.map((card, index)=>{
-        let item = (<div className="Item pull-left ml-5">
+        let item = (<div className="Item pull-left ml-10">
           <img src={"/assets/cards/" + card.idName + ".png"} width="50" />
         </div>)
         return item;

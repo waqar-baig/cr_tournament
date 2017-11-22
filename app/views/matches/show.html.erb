@@ -1,1 +1,5 @@
 <%#= react_component("App", props: {match: @match.as_json, willStart: (@match.team_ids.first == @team.id), team: @team}, prerender: false) %>
+<script>
+  window.canBanCard = <%= @match.team_ids.first == @team.id %>
+  window.isFirstTeam = <%= @match.team_ids.first == @team.id %>
+</script>

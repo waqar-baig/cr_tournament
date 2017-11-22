@@ -1,13 +1,19 @@
 import React from 'react'
-import Footer from './Footer'
 import SelectedDeckList from '../containers/SelectedDeckList'
 import VisibleCardList from '../containers/VisibleCardList'
+import BannedList from './BannedList'
+import OpponentCardList from '../containers/OpponentCardList'
 
 const App = () => (
-  <div className="container">
+  <div className="">
     <SelectedDeckList />
-    <VisibleCardList />
-    <Footer />
+    <div className="row">
+      <VisibleCardList />
+      <div className="col-md-4">
+        <BannedList />
+        <OpponentCardList />
+      </div>
+    </div>
   </div>
 )
 

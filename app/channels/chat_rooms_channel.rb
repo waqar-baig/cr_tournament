@@ -10,7 +10,13 @@ class ChatRoomsChannel < ApplicationCable::Channel
   def card_banned(data)
     # @team = Team.create!(name: data['message'])
     # @team.teams_matches.create(match_id: data['chat_room_id'])
-    MessageBroadcastJob.perform_later(data['message'], data['team_id'])
+    data['action'] = 'card_banned'
+    MessageBroadcastJob.perform_later(data)
+  end
+
+  def card_selected(data)
+    data['action'] = 'card_selected'
+    MessageBroadcastJob.perform_later(data)
   end
 
 end
