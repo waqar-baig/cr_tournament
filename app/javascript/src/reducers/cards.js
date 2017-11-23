@@ -9,8 +9,8 @@ export function cardsIsLoading(state = true, action) {
 
 export function isHold(state=false, action) {
   switch(action.type){
-    case 'HOLD': case 'BAN_CARD': case 'SELECT_CARD':
-      return true;
+    // case 'HOLD': case 'BAN_CARD': case 'SELECT_CARD':
+    //   return true;
     default:
       return false;
   }
@@ -23,13 +23,6 @@ export function cards(state = [], action={}) {
       return action.cards;
     case 'BAN_CARD': case 'OPPONENT_BAN_CARD':
       return state.filter(card => card._id != action.card._id);
-    case 'SELECT_CARD':
-      diff = state.filter(card => {
-        if (card.idName == action.card.idName) {
-          return false;
-        }
-        return action.card.state.playerDeck.filter(c => card.idName == c.idName).length == 0
-      })
     default:
       console.log(diff)
       return diff;

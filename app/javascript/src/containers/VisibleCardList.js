@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { cardsFetchData, handleChange, selectRarity, selectTypes } from '../actions'
 import CardList from '../components/CardList'
 
-const getVisibleCards = (cards=[], filter) => {
+const getVisibleCards = (cards=[], filter, playerDeck) => {
   let _cards = cards
   if (filter.rarity && filter.rarity != 'All') {
     _cards = _cards.filter(c => c.rarity == filter.rarity)
@@ -10,12 +10,13 @@ const getVisibleCards = (cards=[], filter) => {
   if (filter.cardType && filter.cardType != 'All') {
     _cards = _cards.filter(c => c.type == filter.cardType)
   }
+  console.log(playerDeck.length)
   return _cards;
 }
 
 const mapStateToProps = state => {
   return {
-    cards: getVisibleCards(state.cards, state.visibilityFilter),
+    cards: getVisibleCards(state.cards, state.visibilityFilter, state.playerDeck),
     isLoading: state.cardsIsLoading,
     isHold: state.isHold,
     visibilityFilter: state.visibilityFilter

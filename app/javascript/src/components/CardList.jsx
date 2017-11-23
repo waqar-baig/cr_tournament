@@ -5,6 +5,48 @@ import { cardsIsLoading, cardsFetchData } from '../actions';
 import Card from './Card';
 
 class CardList extends Component {
+
+  componentDidMount() {
+    console.log('inside componentDidMount')
+    this.props.fetchData('/cards.json');
+  }
+
+  render() {
+    const createItem = (item, key) =>
+      <option
+        key={key}
+        value={item.value}
+      >
+        {item.name}
+      </option>;
+    let backdrop = <div />
+    if (this.props.isLoading) {
+      return <p>Loading…</p>;
+    } else if (this.props.isHold) {
+      backdrop = <div className="backdrop" />
+    }
+
+    return(
+      <div className="CardList col-md-8">
+        {backdrop}
+        <div className="row cardFilter">
+          <select className="rarityCardFilter" onChange={event => this.props.logChange(event.target.value, name="rarity")}>
+            {this.rarities.map(createItem)}
+          </select>
+
+          <select className="typeCardFilter" onChange={event => this.props.logChange(event.target.value, name="types")}>
+            {this.types.map(createItem)}
+          </select>
+        </div>
+        <div className="row">
+          {this.props.cards.map(card => (
+            <Card key={card._id} {...card} />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   constructor(props) {
     super(props);
     this.selectedRarity = this.props.selectedRarity,
@@ -48,47 +90,6 @@ class CardList extends Component {
           value: 'Building',
         },
       ]
-  }
-
-  componentDidMount() {
-    console.log('inside componentDidMount')
-    this.props.fetchData('/cards.json');
-  }
-
-  render() {
-    const createItem = (item, key) =>
-      <option
-        key={key}
-        value={item.value}
-      >
-        {item.name}
-      </option>;
-    let backdrop = <div />
-    if (this.props.isLoading) {
-      return <p>Loading…</p>;
-    } else if (this.props.isHold) {
-      backdrop = <div className="backdrop" />
-    }
-
-    return(
-      <div className="CardList col-md-8">
-        {backdrop}
-        <div className="row cardFilter">
-          <select className="rarityCardFilter" onChange={event => this.props.logChange(event.target.value, name="rarity")}>
-            {this.rarities.map(createItem)}
-          </select>
-
-          <select className="typeCardFilter" onChange={event => this.props.logChange(event.target.value, name="types")}>
-            {this.types.map(createItem)}
-          </select>
-        </div>
-        <div className="row">
-          {this.props.cards.map(card => (
-            <Card key={card._id} {...card} />
-          ))}
-        </div>
-      </div>
-    );
   }
 }
 

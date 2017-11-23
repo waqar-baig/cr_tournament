@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171113092746) do
+ActiveRecord::Schema.define(version: 20171123092219) do
 
   create_table "matches", force: :cascade do |t|
     t.string "uuid"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20171113092746) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_active", default: true
   end
 
   create_table "teams_matches", force: :cascade do |t|

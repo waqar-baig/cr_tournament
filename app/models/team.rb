@@ -1,6 +1,6 @@
 class Team < ApplicationRecord
 
-	has_many :teams_matches
+	has_many :teams_matches, dependent: :destroy
 	has_many :matches, through: :teams_matches
   has_many :players
 
