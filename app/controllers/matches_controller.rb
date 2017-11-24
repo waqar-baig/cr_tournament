@@ -8,7 +8,7 @@ class MatchesController < ApplicationController
   end
 
   def card_details
-  	@match = Match.find(params[:id])
-  	@decks = @match.decks.group_by(&:player)
+    @match = Match.find(params[:id])
+    @decks = @match.decks.group_by(&:team)
   end
 end
