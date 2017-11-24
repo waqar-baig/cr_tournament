@@ -27,6 +27,11 @@ export const setVisibilityFilter = filter => {
 }
 
 export const selectCard = card => {
+  if (card.state.playerDeck.length == 16) {
+    return {
+      type: 'HOLD'
+    }
+  }
   return {
     type: 'SELECT_CARD',
     card

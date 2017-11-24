@@ -12,9 +12,14 @@ class SelectedDeck extends Component {
       if (this.props.playerDeck.length == 0) {
         playerList = <div className="col-md-12"><h3>Your selected deck will be displayed here.</h3></div>
       } else {
-        playerList = <PlayerDeck playerDeck={this.props.playerDeck} />;
+        let player1 = this.props.playerDeck.slice(0, 8)
+        let player2 = this.props.playerDeck.slice(8, 16)
+        playerList = [
+          <PlayerDeck playerDeck={player1} />,
+          <PlayerDeck playerDeck={player2} />
+        ]
       }
-    return ([<div className="SelectedDeck row">{playerList}</div>]);
+    return ([<div className="players-deck-block">{playerList}</div>]);
   }
 }
 
@@ -26,12 +31,17 @@ class PlayerDeck extends Component {
       playerList = <div className="col-md-12"><h3>Your selected deck will be displayed here.</h3></div>
     } else {
       playerList = this.props.playerDeck.map((card, index)=>{
-        let item = (<div className="Item pull-left ml-10">
-          <img src={"/assets/cards/" + card.idName + ".png"} width="50" />
-        </div>)
+        let item = (<li>
+            <a href="#"><img src={"/assets/cards/" + card.idName + ".png"} width="50" /></a>
+          </li>)
         return item;
       })
     }
+    playerList = (<div class="players-deck player-1-deck">
+      <ul class="decklist">
+        {playerList}
+      </ul>
+    </div>)
 
     return (playerList);
   }

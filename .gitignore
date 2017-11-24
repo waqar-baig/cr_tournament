@@ -26,3 +26,4 @@
 /public/packs-test
 /public/assets
 /node_modules
+*.orig

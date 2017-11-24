@@ -3,52 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { cardsIsLoading, cardsFetchData } from '../actions';
 import Card from './Card';
+import BannedList from './BannedList'
+import SelectedDeckList from '../containers/SelectedDeckList'
 
 class CardList extends Component {
-  constructor(props) {
-    super(props);
-    this.selectedRarity = this.props.selectedRarity,
-    this.rarities = [
-        {
-          name: 'Select Rarity',
-          value: 'All',
-        },
-        {
-          name:  'Common',
-          value: 'Common',
-        },
-        {
-          name:  'Rare',
-          value: 'Rare',
-        },
-        {
-          name:  'Epic',
-          value: 'Epic',
-        },
-        {
-          name: 'Legendary',
-          value: 'Legendary',
-        },
-      ],
-    this.types = [
-        {
-          name: 'Select Type',
-          value: 'All',
-        },
-        {
-          name:  'Troop',
-          value: 'Troop',
-        },
-        {
-          name:  'Spell',
-          value: 'Spell',
-        },
-        {
-          name:  'Building',
-          value: 'Building',
-        },
-      ]
-  }
 
   componentDidMount() {
     console.log('inside componentDidMount')
@@ -71,24 +29,80 @@ class CardList extends Component {
     }
 
     return(
-      <div className="CardList col-md-8">
+      <div className="CardList">
         {backdrop}
-        <div className="row cardFilter">
-          <select className="rarityCardFilter" onChange={event => this.props.logChange(event.target.value, name="rarity")}>
-            {this.rarities.map(createItem)}
-          </select>
-
-          <select className="typeCardFilter" onChange={event => this.props.logChange(event.target.value, name="types")}>
-            {this.types.map(createItem)}
-          </select>
+        <div className="filter-block clearfix">
+          <div className="filter">
+            <label >Filter By</label>
+            <select className="rarityCardFilter" onChange={event => this.props.logChange(event.target.value, name="rarity")}>
+              {this.rarities.map(createItem)}
+            </select>
+            <label >Filter By</label>
+            <select className="typeCardFilter" onChange={event => this.props.logChange(event.target.value, name="types")}>
+              {this.types.map(createItem)}
+            </select>
+          </div>
+          <BannedList />
         </div>
-        <div className="row">
-          {this.props.cards.map(card => (
-            <Card key={card._id} {...card} />
-          ))}
+        <div className="deckbuilder-block">
+          <div className="cards-picker-block">
+            <ul className="cards">
+              {this.props.cards.map(card => (
+                <Card key={card._id} {...card} />
+              ))}
+            </ul>
+          </div>
+          <div className="">
+            <SelectedDeckList />
+          </div>
         </div>
       </div>
     );
+  }
+
+  constructor(props) {
+    super(props);
+    this.selectedRarity = this.props.selectedRarity,
+    this.rarities = [
+        {
+          name: 'All Rarity',
+          value: 'All',
+        },
+        {
+          name:  'Common',
+          value: 'Common',
+        },
+        {
+          name:  'Rare',
+          value: 'Rare',
+        },
+        {
+          name:  'Epic',
+          value: 'Epic',
+        },
+        {
+          name: 'Legendary',
+          value: 'Legendary',
+        },
+      ],
+    this.types = [
+        {
+          name: 'All Type',
+          value: 'All',
+        },
+        {
+          name:  'Troop',
+          value: 'Troop',
+        },
+        {
+          name:  'Spell',
+          value: 'Spell',
+        },
+        {
+          name:  'Building',
+          value: 'Building',
+        },
+      ]
   }
 }
 

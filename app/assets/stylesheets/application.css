@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-.App {
+/*.App {
   text-align: center;
 }
 
@@ -69,4 +69,4 @@
 
 .rarityCardFilter, .typeCardFilter {
   margin: 0 10px;
-}
+}*/
