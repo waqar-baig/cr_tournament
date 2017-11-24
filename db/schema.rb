@@ -10,12 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171123092219) do
+ActiveRecord::Schema.define(version: 20171124120306) do
+
+  create_table "banned_cards", force: :cascade do |t|
+    t.integer "match_id"
+    t.integer "card_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_banned_cards_on_card_id"
+    t.index ["match_id"], name: "index_banned_cards_on_match_id"
+  end
+
+  create_table "cards", force: :cascade do |t|
+    t.string "uid"
+    t.string "name"
+    t.string "rarity"
+    t.string "category"
+    t.text "description"
+    t.integer "elixir_cost"
+    t.string "display_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "decks", force: :cascade do |t|
+    t.integer "card_id"
+    t.integer "team_id"
+    t.integer "player_id"
+    t.integer "match_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_decks_on_card_id"
+    t.index ["match_id"], name: "index_decks_on_match_id"
+    t.index ["player_id"], name: "index_decks_on_player_id"
+    t.index ["team_id"], name: "index_decks_on_team_id"
+  end
 
   create_table "matches", force: :cascade do |t|
     t.string "uuid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "video_link"
+    t.integer "winner_id"
   end
 
   create_table "players", force: :cascade do |t|
