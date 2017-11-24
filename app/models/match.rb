@@ -6,6 +6,7 @@ class Match < ApplicationRecord
   has_many :decks
   has_many :banned_cards
   has_many :cards, through: :decks
+  belongs_to :winner_team, foreign_key: :winner_id,   class_name: 'Team'
 
   def as_json(opts = nil)
     more = {}
