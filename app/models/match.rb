@@ -3,12 +3,28 @@ class Match < ApplicationRecord
   has_many :teams_matches
   has_many :teams, through: :teams_matches
   has_many :players, through: :teams
+  has_many :decks
+  has_many :banned_cards
+  has_many :cards, through: :decks
+  belongs_to :winner_team, foreign_key: :winner_id,   class_name: 'Team'
 
   def as_json(opts = nil)
     more = {}
     more[:teams] = teams
     attributes.merge(more)
   end
+
+  def store_deck(data)
+    card = Card.find_by_uid(data["card_id"])
+    players = self.teams.find_by_id(data["team_id"]).players
+    if data["player_id"] == 1
+      player = players[0]
+    else
+      player = players[1]
+    end
+    self.decks.create(card_id: card.id, team_id: data["team_id"], player_id: player.id)
+  end
+
   def match_links
     'akjds'
   end
@@ -31,6 +47,16 @@ class Match < ApplicationRecord
           end.join('<br/>').html_safe
         end
       end
+      field :players
+      field :cards_details do
+        pretty_value do
+          bindings[:view].tag(:a, href: "/matches/#{bindings[:object].id}/card_details", target: '_blank', title: 'cards') << "Cards"
+        end
+      end
     end
+  end
+
+  def cards_details
+    'fdfd'
   end
 end

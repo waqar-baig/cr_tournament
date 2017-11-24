@@ -33,14 +33,16 @@ class CardList extends Component {
         {backdrop}
         <div className="filter-block clearfix">
           <div className="filter">
-            <label >Filter By</label>
-            <select className="rarityCardFilter" onChange={event => this.props.logChange(event.target.value, name="rarity")}>
-              {this.rarities.map(createItem)}
-            </select>
-            <label >Filter By</label>
-            <select className="typeCardFilter" onChange={event => this.props.logChange(event.target.value, name="types")}>
-              {this.types.map(createItem)}
-            </select>
+            <div class="filter-inner">
+              <label >Filter By</label>
+              <select className="select" onChange={event => this.props.logChange(event.target.value, name="rarity")}>
+                {this.rarities.map(createItem)}
+              </select>
+              <label >Filter By</label>
+              <select className="select" onChange={event => this.props.logChange(event.target.value, name="types")}>
+                {this.types.map(createItem)}
+              </select>
+            </div>
           </div>
           <BannedList />
         </div>
@@ -52,9 +54,7 @@ class CardList extends Component {
               ))}
             </ul>
           </div>
-          <div className="">
-            <SelectedDeckList />
-          </div>
+          <SelectedDeckList />
         </div>
       </div>
     );

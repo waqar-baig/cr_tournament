@@ -12,7 +12,7 @@ class BannedList extends Component {
       } else {
         cardList = this.props.cardsBanned.map((card, index)=>{
           let item = (<li className="">
-                        <img src={"/assets/cards/" + card.idName + ".png"} />
+                        <img src={"/images/cards/" + card.idName + ".png"} />
                       </li>)
           return item;
         })

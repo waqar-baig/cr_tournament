@@ -74,8 +74,8 @@ export function cardsBanned(state = [], action={}) {
 }
 
 let secretCard = {
-  _id: 'secret',
-  idName: 'secret'
+  _id: '',
+  idName: ''
 }
 
 export function opponentCards(state=[], action={}) {

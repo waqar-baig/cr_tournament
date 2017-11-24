@@ -17,7 +17,7 @@ class CardElement extends Component {
 
     return (
       <li><a href="#" onClick={this.handleClick.bind(this, card)}>
-        <img src={"/assets/cards/" + card.idName + ".png"} width="75" />
+        <img src={"/images/cards/" + card.idName + ".png"} width="75" />
       </a></li>
     );
   }

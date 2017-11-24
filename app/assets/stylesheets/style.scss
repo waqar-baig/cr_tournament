@@ -1,0 +1,288 @@
+@font-face {
+  font-family: 'Supercell-Magic';
+  src:	asset-url('fonts/Supercell-Magic.eot?#iefix') format('embedded-opentype'),
+  		asset-url('fonts/Supercell-Magic.woff') format('woff'),
+  		font-url('fonts/Supercell-Magic.ttf')  format('truetype'),
+  		asset-url('fonts/Supercell-Magic.svg#Supercell-Magic') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{
+	font-size: 16px;
+	color: #ffffff;
+	background: url('/images/cr-bg.jpg') 0 0 repeat #38444b;
+	font-family: 'Supercell-Magic';
+}
+
+ul, ol{
+	list-style: none;
+}
+img{
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+.clearfix:after {
+    content: "";
+	display: block;
+    clear: both;
+}
+
+.wrapper{}
+
+header{
+	padding: 10px 0;
+	background-color: #263238;
+	height: 80px;
+}
+header img{
+	margin: auto;
+}
+
+
+h2{
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: normal;
+}
+.average-elixir{
+	font-size: 12px;
+    margin: 5px 0;
+}
+.select{
+	display: inline-block;
+	width: 200px;
+	height: 30px;
+	padding: 5px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #ffffff;
+	background-color: transparent;
+	background-image: none;
+	border: 0;
+	border-bottom: 1px solid transparent;
+	outline: none;
+}
+.select option{
+	color: #263238;
+}
+.select option[disabled]{
+	background-color: #aaa;
+}
+
+.deck{}
+.deck li{
+	width: 60px;
+	height: 60px;
+	margin: 0 5px;
+}
+
+
+.cards{}
+.cards li{
+	width: 60px;
+	height: 60px;
+	float: left;
+	margin: 10px 5px;
+}
+
+
+.opponent-card-section{
+	height: 120px;
+	position: relative;
+	/*padding: 10px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;*/
+}
+.opponent-card-section:before{
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 50%;
+	z-index: -1;
+	background: rgba(255,255,255,1);
+	background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(63,164,201,0.93) 70%, rgba(63,164,201,0.9) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,0)), color-stop(70%, rgba(63,164,201,0.93)), color-stop(100%, rgba(63,164,201,0.9)));
+	background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(63,164,201,0.93) 70%, rgba(63,164,201,0.9) 100%);
+	background: -o-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(63,164,201,0.93) 70%, rgba(63,164,201,0.9) 100%);
+	background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(63,164,201,0.93) 70%, rgba(63,164,201,0.9) 100%);
+	background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(63,164,201,0.93) 70%, rgba(63,164,201,0.9) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#3fa4c9', GradientType=0 );
+}
+.opponent-card-section:after{
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 50%;
+	right: 0;
+	z-index: -1;
+	background: rgba(255,255,255,1);
+	background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(211,139,150,0.93) 70%, rgba(211,139,150,0.9) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,0)), color-stop(70%, rgba(211,139,150,0.93)), color-stop(100%, rgba(211,139,150,0.9)));
+	background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(211,139,150,0.93) 70%, rgba(211,139,150,0.9) 100%);
+	background: -o-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(211,139,150,0.93) 70%, rgba(211,139,150,0.9) 100%);
+	background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(211,139,150,0.93) 70%, rgba(211,139,150,0.9) 100%);
+	background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(211,139,150,0.93) 70%, rgba(211,139,150,0.9) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#d38b96', GradientType=0 );
+}
+.opponent-blue{
+	position: absolute;
+	top: -60px;
+	z-index: 0;
+	left: 10px;
+	height: 200px;
+}
+.opponent-red{
+	position: absolute;
+	top: -60px;
+	z-index: 0;
+	right: 10px;
+	height: 200px;
+}
+.opponent-card-section h2{
+	display: inline-block;
+  vertical-align: middle;
+	margin: 0 20px;
+	text-transform: uppercase;
+}
+.opponent-card-section .decklist{
+	height: 75px;
+}
+.opponent-card-section .opponent-1{
+	padding: 10px;
+	width: calc(50% - 120px);
+    text-align: right;
+    display: inline-block;
+    vertical-align: middle;
+}
+.opponent-card-section .opponent-1 .average-elixir{
+	text-align: right;
+	padding-right: 5px;
+}
+.opponent-card-section .opponent-2{
+	padding: 10px;
+	width: calc(50% - 120px);
+  display: inline-block;
+  vertical-align: middle;
+}
+.opponent-card-section .opponent-2 .average-elixir{
+	padding-left: 5px;
+}
+.decklist{
+	display: inline-block;
+	vertical-align: middle;
+	width: 280px;
+}
+.decklist li{
+	width: 60px;
+	float: left;
+	margin: 0 5px;
+}
+.decklist li:nth-child(4n+1){
+	clear: both;
+}
+.opponent-card-section .decklist li:nth-child(4n+1){clear: none;}
+
+
+
+
+.filter-block{
+	height: 100px;
+	background: rgba(60, 154, 194, 0.5);
+}
+.filter-block .filter{
+	width: 50%;
+	float: left;
+	padding: 20px;
+	text-align: center;
+}
+.filter-block .filter .filter-inner{
+	background-color: #0e5484;
+	border-radius: 360px;
+	padding: 10px 20px;
+	display: inline-block;
+}
+.filter-block .banned-cards{
+	height: 100%;
+	float: left;
+	width: 50%;
+	padding: 10px;
+	background-color: #b24064;
+}
+.banned-cards .cards{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+.banned-cards .cards li{
+	margin: 0 40px;
+	position: relative;
+	height: auto;
+}
+.banned-cards .cards li:before{
+	content: "";
+	position: absolute;
+	height: 41px;
+	width: 64px;
+	bottom: -10px;
+    right: -15px;
+	background: url('/images/banned.png') 0 0 no-repeat;
+}
+
+.deckbuilder-block{
+	height: calc(100vh - 300px);
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: stretch;
+	align-content: stretch;
+}
+.cards-picker-block{
+	padding: 0 30px 30px 30px;
+	width: 50%;
+	height: 100%;
+    overflow-y: scroll;
+    background: rgba(60, 154, 194, 0.5);
+}
+.players-deck-block{
+	text-align: center;
+	padding: 20px;
+	width: 50%;
+	background: rgba(88,164,177,1);
+	background: -moz-radial-gradient(center, ellipse cover, rgba(88,164,177,1) 0%, rgba(0,39,70,1) 100%);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(88,164,177,1)), color-stop(100%, rgba(0,39,70,1)));
+	background: -webkit-radial-gradient(center, ellipse cover, rgba(88,164,177,1) 0%, rgba(0,39,70,1) 100%);
+	background: -o-radial-gradient(center, ellipse cover, rgba(88,164,177,1) 0%, rgba(0,39,70,1) 100%);
+	background: -ms-radial-gradient(center, ellipse cover, rgba(88,164,177,1) 0%, rgba(0,39,70,1) 100%);
+	background: radial-gradient(ellipse at center, rgba(88,164,177,1) 0%, rgba(0,39,70,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#58a4b1', endColorstr='#002746', GradientType=1 );
+}
+
+.players-deck{
+	margin: 20px 0;
+}
+.players-deck .decklist{
+	width: 280px;
+	height: 170px;
+}
+.players-deck .decklist li{
+	margin: 5px;
+}

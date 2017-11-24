@@ -1,0 +1,76 @@
+<style type="text/css">
+
+  .deck_container{
+
+  color: white; background-color: #664213; background-image: -ms-repeating-linear-gradient(top, #664213 0%, #996F28 7%, #664213 10%, #996F28 25%, #664213 26%, #996F28 37%, #664213 38%, #996F28 59%, #664213 61%); background-image: -moz-repeating-linear-gradient(top, #664213 0%, #996F28 7%, #664213 10%, #996F28 25%, #664213 26%, #996F28 37%, #664213 38%, #996F28 59%, #664213 61%); background-image: -o-repeating-linear-gradient(top, #664213 0%, #996F28 7%, #664213 10%, #996F28 25%, #664213 26%, #996F28 37%, #664213 38%, #996F28 59%, #664213 61%); background-image: -webkit-repeating-gradient(linear, left top, left bottom, color-stop(0, #664213), color-stop(0.07, #996F28), color-stop(0.1, #664213), color-stop(0.25, #996F28), color-stop(0.26, #664213), color-stop(0.37, #996F28), color-stop(0.38, #664213), color-stop(0.59, #996F28), color-stop(0.61, #664213)); background-image: -webkit-repeating-linear-gradient(top, #664213 0%, #996F28 7%, #664213 10%, #996F28 25%, #664213 26%, #996F28 37%, #664213 38%, #996F28 59%, #664213 61%); background-image: repeating-linear-gradient(To Bottom, #664213 0%, #996F28 7%, #664213 10%, #996F28 25%, #664213 26%, #996F28 37%, #664213 38%, #996F28 59%, #664213 61%); border: outset 5px #996F28; box-shadow: 0 0 4px 1px #737373; border-radius: 3px;
+  }
+
+  .deck_heading{
+
+    text-align: left; font-family: Magic; padding-left: 5px; font-size: 20px; text-shadow: 1px 1px 1px black, -1px -1px 1px black, 1px -1px 1px black, -1px 1px 1px black, 0px -1px 1px black, 0px 1px 1px black, -1px 0px 1px black, 1px 0px 1px black, 0 2px 1px black, -1px 3px 1px black, 1px 3px 1px black; line-height: 28px;font-weight: bold;
+  }
+  .player_heading{
+
+    text-align: center; font-family: Magic; padding-left: 5px; font-size: 20px; text-shadow: 1px 1px 1px black, -1px -1px 1px black, 1px -1px 1px black, -1px 1px 1px black, 0px -1px 1px black, 0px 1px 1px black, -1px 0px 1px black, 1px 0px 1px black, 0 2px 1px black, -1px 3px 1px black, 1px 3px 1px black; line-height: 28px;font-weight: bold;
+  }
+  .match-img {
+    margin-bottom: 20%;
+    margin-top: 20%;
+    text-align: center;
+        /*margin-top: 133%;
+    margin-left: 200%;*/
+  }
+  .video_link {
+    margin-top: 10px;
+  }
+
+  .winner {
+    text-align: center;
+    color: green;
+  }
+
+  .looser {
+    text-align: center;
+    color: red;
+  }
+</style>
+
+<link type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<div class="container">
+  <h2><%= @match.id %></h2>
+  <div class="row">
+    <% @decks.each_with_index do |(team, team_decks), index| %>
+      <div class="col-md-5 deck_container">
+        <% if @match.winner_id == team.id %>
+          <h2 class='winner'>WINNER </h2>
+        <% else %>
+          <h2 class='looser'> LOOSER </h2>
+        <% end %>
+        <div class="row">
+          <span class="deck_heading"><%= team.name %></span>
+        </div>
+        <div class="row">
+          <% team_decks.group_by(&:player).each do |player, deck| %>
+            <div class="col-md-12">
+              <div class="row">
+                <span class="player_heading"><%= player.name %></span>
+              </div>
+              <div class="row"></div>
+              <% deck.each do |deck1| %>
+                <%= image_tag "/assets/cards/#{deck1.card.name}.png", width: '100px', height: '100px' %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <% if index ==0 %>
+        <div class="col-md-2 match-img">
+        <%= image_tag "/assets/Clan-Battle.png", width: '100px', height: '100px'%>
+        <div class="row"></div>
+        <%= link_to 'Video Link', @match.video_link, class: "btn btn-primary video_link", target: :_blank %>
+      <% end %>
+      </div>
+    <% end %>
+  </div>
+    
+</div>
