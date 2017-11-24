@@ -32,7 +32,7 @@ class PlayerDeck extends Component {
     } else {
       playerList = this.props.playerDeck.map((card, index)=>{
         let item = (<li>
-            <a href="#"><img src={"/assets/cards/" + card.idName + ".png"} width="50" /></a>
+            <a href="#"><img src={"/images/cards/" + card.idName + ".png"} width="50" /></a>
           </li>)
         return item;
       })
