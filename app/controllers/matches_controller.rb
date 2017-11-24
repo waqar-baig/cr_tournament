@@ -11,4 +11,8 @@ class MatchesController < ApplicationController
     @match = Match.find(params[:id])
     @decks = @match.decks.group_by(&:team)
   end
+
+  def details
+    @match = Match.find(params[:id])
+  end
 end

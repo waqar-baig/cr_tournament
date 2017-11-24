@@ -1,0 +1,9 @@
+<header>
+  <h1><img src="/images/logo.png"></h1>
+</header>
+<br/>
+<center>
+<% @match.teams.each do |team| %>
+  <h3> <%= link_to team.name, match_path(@match, team_id: team.id), target: '_blank', style: 'color: white;' %></h3><br/ >
+<% end %>
+</center>
