@@ -10,7 +10,16 @@ const getVisibleCards = (cards=[], filter, playerDeck) => {
   if (filter.cardType && filter.cardType != 'All') {
     _cards = _cards.filter(c => c.type == filter.cardType)
   }
-  console.log(playerDeck.length)
+  let deck = []
+  if (playerDeck.length < 8) {
+    deck = playerDeck.slice(0, 8)
+  } else {
+    deck = playerDeck.slice(8, 16)
+  }
+  _cards = _cards.filter(card => {
+    return deck.filter(c => card.idName == c.idName).length == 0
+  })
+
   return _cards;
 }
 

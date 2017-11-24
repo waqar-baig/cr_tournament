@@ -73,14 +73,26 @@ export function cardsBanned(state = [], action={}) {
   }
 }
 
+let secretCard = {
+  _id: 'secret',
+  idName: 'secret'
+}
+
 export function opponentCards(state=[], action={}) {
   switch (action.type) {
     case 'OPPONENT_SELECT_CARD':
+      let card = action.card;
+      console.log(state.length)
+      if (state.length > 7 && state.length < 12) {
+        // do nothing
+      } else if (state.length > 11 || state.length > 3) {
+        card = secretCard
+      }
       return [
         ...state,
         {
-          _id: action.card._id,
-          idName: action.card.idName
+          _id: card._id,
+          idName: card.idName
         }
       ];
     default:

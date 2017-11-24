@@ -1,6 +1,6 @@
 Socket.default = Socket.cable.subscriptions.create {
     channel: "ChatRoomsChannel"
-    chat_room_id: ''
+    chat_room_id: matchID
   },
   connected: ->
     # Called when the subscription is ready for use on the server

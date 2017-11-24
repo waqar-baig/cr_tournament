@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { cardsIsLoading, cardsFetchData } from '../actions';
 import Card from './Card';
+import BannedList from './BannedList'
+import SelectedDeckList from '../containers/SelectedDeckList'
 
 class CardList extends Component {
 
@@ -27,21 +29,32 @@ class CardList extends Component {
     }
 
     return(
-      <div className="CardList col-md-8">
+      <div className="CardList">
         {backdrop}
-        <div className="row cardFilter">
-          <select className="rarityCardFilter" onChange={event => this.props.logChange(event.target.value, name="rarity")}>
-            {this.rarities.map(createItem)}
-          </select>
-
-          <select className="typeCardFilter" onChange={event => this.props.logChange(event.target.value, name="types")}>
-            {this.types.map(createItem)}
-          </select>
+        <div className="filter-block clearfix">
+          <div className="filter">
+            <label >Filter By</label>
+            <select className="rarityCardFilter" onChange={event => this.props.logChange(event.target.value, name="rarity")}>
+              {this.rarities.map(createItem)}
+            </select>
+            <label >Filter By</label>
+            <select className="typeCardFilter" onChange={event => this.props.logChange(event.target.value, name="types")}>
+              {this.types.map(createItem)}
+            </select>
+          </div>
+          <BannedList />
         </div>
-        <div className="row">
-          {this.props.cards.map(card => (
-            <Card key={card._id} {...card} />
-          ))}
+        <div className="deckbuilder-block">
+          <div className="cards-picker-block">
+            <ul className="cards">
+              {this.props.cards.map(card => (
+                <Card key={card._id} {...card} />
+              ))}
+            </ul>
+          </div>
+          <div className="">
+            <SelectedDeckList />
+          </div>
         </div>
       </div>
     );
@@ -52,7 +65,7 @@ class CardList extends Component {
     this.selectedRarity = this.props.selectedRarity,
     this.rarities = [
         {
-          name: 'Select Rarity',
+          name: 'All Rarity',
           value: 'All',
         },
         {
@@ -74,7 +87,7 @@ class CardList extends Component {
       ],
     this.types = [
         {
-          name: 'Select Type',
+          name: 'All Type',
           value: 'All',
         },
         {

@@ -1,0 +1,148 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+
+body{
+	background: #222;
+	font-size: 16px;
+	color: #ffffff;
+	font-family: arial;
+}
+
+ul, ol{
+	list-style: none;
+}
+img{
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+.clearfix:after {
+    content: "";
+	display: block;
+    clear: both;
+}
+
+.wrapper{
+	/*padding-top: 140px;*/
+}
+
+
+h2{
+	text-align: center;
+	text-transform: capitalize;
+	margin-bottom: 10px;
+}
+
+.deck{
+	margin: 0 -10px;
+}
+.deck li{
+	width: 80px;
+	height: 80px;
+	padding: 0 10px;
+}
+
+
+.cards{
+	margin: 0 -10px;
+}
+.cards li{
+	width: 80px;
+	height: 80px;
+	float: left;
+	margin: 5px 0 5px 0;
+	padding: 0 10px;
+}
+
+
+.OpponentCard{
+	/*position: fixed;
+	left: 0;
+    right: 0;
+    top: 0;*/
+	height: 210px;
+	padding: 10px;
+	background-color: #333333;
+}
+.OpponentCard .opponent-1{
+	width: 50%;
+	float: left;
+	text-align: center;
+}
+.OpponentCard .opponent-2{
+	width: 50%;
+	float: left;
+	text-align: center;
+}
+.decklist{
+	width: 440px;
+	display: inline-block;
+	margin: 0 -10px;
+}
+.decklist li{
+	width: 80px;
+	float: left;
+	padding: 0 10px;
+}
+.decklist li:nth-child(4n+1){
+	clear: both;
+}
+
+
+
+.filter-block{
+	height: 100px;
+	background: #444444;
+}
+.filter-block .filter{
+	width: 50%;
+	float: left;
+	padding: 10px;
+}
+.filter-block .banned-cards{
+	float: left;
+	width: 50%;
+	padding: 10px;
+}
+.banned-cards .cards{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: center;
+	align-content: center;
+}
+.banned-cards .cards li{margin: 0}
+
+
+
+
+.deckbuilder-block{
+	height: calc(100vh - 240px);
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: stretch;
+	align-content: stretch;
+}
+.cards-picker-block{
+	padding: 40px;
+	width: 50%;
+	height: 100%;
+    overflow-y: scroll;
+}
+.players-deck-block{
+	text-align: center;
+	padding: 40px;
+	width: 50%;
+	background-color: #292b2c;
+}
+
+.players-deck{
+	margin: 20px 0;
+}

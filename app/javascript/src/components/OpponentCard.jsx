@@ -9,11 +9,19 @@ class OpponentCard extends Component {
     if (this.props.opponentCards.length == 0) {
       cardList = <div className="col-md-12"><h3>Your opponent's card will appear here!</h3></div>
     } else {
-      cardList = this.props.opponentCards.map((card, index)=>{
-        let item = (<div className="Item pull-left ml-10">
-                      <img src={"/assets/cards/" + card.idName + ".png"} />
-                    </div>)
-        return item;
+
+      let opponent1 = this.props.opponentCards.slice(0, 8).map((card, index) => {
+        return (<li><img src={"/assets/cards/" + card.idName + ".png"} alt={card.idName} /></li>)
+      });
+      let opponent2 = this.props.opponentCards.slice(8, 16).map((card, index) => {
+        return (<li><img src={"/assets/cards/" + card.idName + ".png"} alt={card.idName} /></li>)
+      })
+      cardList = [opponent1, opponent2].map((deck, index)=>{
+        return (<div className={"opponent-" + (index + 1)}>
+          <ul class="decklist">
+            {deck}
+          </ul>
+        </div>)
       })
     }
     return ([<div className="OpponentCard row">{cardList}</div>]);

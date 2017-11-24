@@ -16,10 +16,9 @@ class CardElement extends Component {
     var card = this.props
 
     return (
-      <div className="Card col-md-2" onClick={this.handleClick.bind(this, card)}>
-        <div></div>
+      <li><a href="#" onClick={this.handleClick.bind(this, card)}>
         <img src={"/assets/cards/" + card.idName + ".png"} width="75" />
-      </div>
+      </a></li>
     );
   }
 }

@@ -8,15 +8,15 @@ export const addTodo = text => {
 }
 
 export const handleCardClick = card => {
-  // if (card.state.cardsBanned.length >=2 && window.canSelectCard) {
+  if (card.state.cardsBanned.length >=2 && window.canSelectCard) {
     return selectCard(card)
-  // } else if (window.canBanCard) {
-  //   return banCard(card)
-  // } else {
-  //   return {
-  //     type: 'HOLD'
-  //   }
-  // }
+  } else if (window.canBanCard) {
+    return banCard(card)
+  } else {
+    return {
+      type: 'HOLD'
+    }
+  }
 }
 
 export const setVisibilityFilter = filter => {
@@ -27,6 +27,11 @@ export const setVisibilityFilter = filter => {
 }
 
 export const selectCard = card => {
+  if (card.state.playerDeck.length == 16) {
+    return {
+      type: 'HOLD'
+    }
+  }
   return {
     type: 'SELECT_CARD',
     card
