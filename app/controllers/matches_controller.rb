@@ -6,4 +6,9 @@ class MatchesController < ApplicationController
       render text: '<h3>Team not found</h3>', layout: false
     end
   end
+
+  def card_details
+  	@match = Match.find(params[:id])
+  	@decks = @match.decks.group_by(&:player)
+  end
 end

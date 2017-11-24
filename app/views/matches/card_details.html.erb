@@ -1,0 +1,10 @@
+<div>
+  <% @decks.each do |player, decks| %>
+    <h3><%= player.name %></h3>
+    <ul>
+      <% decks.each do |deck| %>
+        <li><%= deck.card.name %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
