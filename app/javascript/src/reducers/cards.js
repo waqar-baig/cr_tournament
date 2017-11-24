@@ -8,9 +8,12 @@ export function cardsIsLoading(state = true, action) {
 }
 
 export function isHold(state=false, action) {
+  if (!canSelectCard && !canBanCard) {
+    return true;
+  }
   switch(action.type){
-    // case 'HOLD': case 'BAN_CARD': case 'SELECT_CARD':
-    //   return true;
+    case 'HOLD': case 'BAN_CARD': case 'SELECT_CARD':
+      return true;
     default:
       return false;
   }
@@ -24,7 +27,6 @@ export function cards(state = [], action={}) {
     case 'BAN_CARD': case 'OPPONENT_BAN_CARD':
       return state.filter(card => card._id != action.card._id);
     default:
-      console.log(diff)
       return diff;
   }
 }
@@ -82,7 +84,6 @@ export function opponentCards(state=[], action={}) {
   switch (action.type) {
     case 'OPPONENT_SELECT_CARD':
       let card = action.card;
-      console.log(state.length)
       if (state.length > 7 && state.length < 12) {
         // do nothing
       } else if (state.length > 11 || state.length > 3) {

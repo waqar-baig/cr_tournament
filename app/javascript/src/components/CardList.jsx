@@ -9,7 +9,6 @@ import SelectedDeckList from '../containers/SelectedDeckList'
 class CardList extends Component {
 
   componentDidMount() {
-    console.log('inside componentDidMount')
     this.props.fetchData('/cards.json');
   }
 
@@ -25,15 +24,14 @@ class CardList extends Component {
     if (this.props.isLoading) {
       return <p>Loading…</p>;
     } else if (this.props.isHold) {
-      backdrop = <div className="backdrop" />
+      backdrop = <div className="backdrop" ></div>
     }
 
     return(
       <div className="CardList">
-        {backdrop}
         <div className="filter-block clearfix">
           <div className="filter">
-            <div class="filter-inner">
+            <div className="filter-inner">
               <label >Filter By</label>
               <select className="select" onChange={event => this.props.logChange(event.target.value, name="rarity")}>
                 {this.rarities.map(createItem)}
@@ -47,6 +45,7 @@ class CardList extends Component {
           <BannedList />
         </div>
         <div className="deckbuilder-block">
+          {backdrop}
           <div className="cards-picker-block">
             <ul className="cards">
               {this.props.cards.map(card => (

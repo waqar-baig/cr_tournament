@@ -13,6 +13,15 @@
  *= require_tree .
  *= require_self
  */
+.backdrop {
+  position: absolute;
+  height: 100%;
+  display: block;
+  background-color: #fff;
+  width: 50%;
+  z-index: 2;
+  opacity: 0.5;
+}
 /*.App {
   text-align: center;
 }
@@ -42,15 +51,7 @@
 .OpponentCard { background-color: yellow; }
 .BannedList h3 { text-align: center; color: white; margin: 20px 0px; }
 .CardList { background-color: green; position: relative; }
-.backdrop {
-  position: absolute;
-  height: 100%;
-  display: block;
-  background-color: #fff;
-  width: 100%;
-  z-index: 2;
-  opacity: 0.5;
-}
+
 .SelectedDeck, .selected-deck {
   background-color: #004cf6;
   padding: 5px;

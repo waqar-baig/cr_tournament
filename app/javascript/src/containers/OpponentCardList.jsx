@@ -16,7 +16,6 @@ const mapDispatchToProps = dispatch => {
       chat_room_id: '1'
     }, {
       received (data) {
-        console.log('opponentSelectedCard')
         if (data.team_id == window.currentTeamId || data.action == 'card_banned') {
           return
         }

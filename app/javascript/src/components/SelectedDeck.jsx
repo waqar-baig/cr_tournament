@@ -31,14 +31,14 @@ class PlayerDeck extends Component {
       playerList = <div className="col-md-12"><h3>Your selected deck will be displayed here.</h3></div>
     } else {
       playerList = this.props.playerDeck.map((card, index)=>{
-        let item = (<li>
+        let item = (<li key={index}>
             <a href="#"><img src={"/images/cards/" + card.idName + ".png"} width="50" /></a>
           </li>)
         return item;
       })
     }
-    playerList = (<div class="players-deck player-1-deck">
-      <ul class="decklist">
+    playerList = (<div className="players-deck player-1-deck">
+      <ul className="decklist">
         {playerList}
       </ul>
     </div>)

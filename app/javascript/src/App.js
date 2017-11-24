@@ -62,7 +62,6 @@ class App extends Component {
     axios.get('/cards.json')
       .then(res => {
         const cards = res.data
-        console.log(cards)
         this.setState({ cards: cards, bannedList: this.state.bannedList });
       });
     var that = this
@@ -123,7 +122,6 @@ class App extends Component {
                         {this.components.cards}
                         {this.components.selectedDeck}
                       </div>;
-    console.log(this.match);
     return ([this.components.bannedList, playerBoard])
   }
 }

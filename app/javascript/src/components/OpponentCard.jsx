@@ -27,7 +27,7 @@ class OpponentCard extends Component {
           <ul className="decklist clearfix">
             {opponent2}
           </ul>
-          <span class="player-label">Player 2</span>
+          <span className="player-label">Player 2</span>
         </div>
       ]
     }

@@ -8,9 +8,6 @@ Socket.default = Socket.cable.subscriptions.create {
   disconnected: ->
     # Called when the subscription has been terminated by the server
 
-  received: (data) ->
-    messages.append data['message']
-
   card_banned: (cardID, cardName, teamID) ->
     @perform 'card_banned', card_id: cardID, card_name: cardName, team_id: teamID, match_id: matchID
 
